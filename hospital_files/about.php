@@ -22,8 +22,8 @@ echo Asset::img("sara.jpg", array("alt" => "Sara Williams", "height" => "200", "
 ?>
 <!-- <img src="sara.jpg" alt="sara " height="42" width="42"> -->
 <p style="text-align:center;"> ACT Student </p>
-<p style="text-align:center;"> @rams.colostate.edu </p>
-<p style="text-align: center">Link to <a href="https://www.cs.colostate.edu:4444/~jrindnls/ct310/index.php/ourhospital/home.php">Sara's</a> website.</p>
+<p style="text-align:center;"> soraiku@rams.colostate.edu </p>
+<p style="text-align: center">Link to <a href="https://www.cs.colostate.edu:4444/~soraiku/ct310/index.php/ourhospital/home.php">Sara's</a> website.</p>
 <hr class="w3-border-grey" style="margin:auto;width:40%">
 
 <h1 style="text-align:center;">Raghd Alowairdhi</h1>
