@@ -2,7 +2,7 @@
 $id = $_GET['id'];
 $description = $_GET['description'];
 
-echo "<h1>Data for $id: $description</h1>";
+echo "<h2>Data for $id: $description</h2>";
 
 
 
@@ -36,6 +36,7 @@ echo "<h1>Data for $id: $description</h1>";
 
             $(function() {
                 $("table").tablesorter({
+                    theme: "ice",
                     widthFixed: false,
                     cancelSelection: true,
                     tabIndex: true,
@@ -55,7 +56,7 @@ echo "<h1>Data for $id: $description</h1>";
                     sortInitialOrder: "asc",
                     sortReset: true,
                     initWidgets: true,
-                    widgets: ['zebra', 'columns'],
+                    widgets: ['zebra', 'columns', 'uitheme'],
                     widgetOptions: {
                         columns: [
                             "DRG_Number",
@@ -64,8 +65,8 @@ echo "<h1>Data for $id: $description</h1>";
                         columns_thead: true,
                         resizable: true,
                         zebra: [
-                            "even",
-                            "odd"
+                            "ui-widget-content even",
+                            "ui-state-default odd"
                         ]
                     },
 
@@ -75,4 +76,4 @@ echo "<h1>Data for $id: $description</h1>";
         </script>
     </div>
 </div>
- 
+
