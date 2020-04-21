@@ -17,25 +17,14 @@
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
-<!--    --><?php
-//    echo Asset::js('jquery.tablesorter.js');
-//    echo Asset::js('jquery.tablesorter.widgets.js');
-//    echo Asset::js('widget-alignChar.js');
-//    echo Asset::js('widget-build-table.js');
-//    echo Asset::js('widget-columnSelector.js');
-//    echo Asset::js('widget-cssStickyHeaders.js');
-//    echo Asset::js('widget-editable.js');
-//    echo Asset::js('widget-grouping.js');
-//    echo Asset::js('widget-headerTitles.js');
-//    echo Asset::js('widget-math.js');
-//    echo Asset::js('widget-output.js');
-//    echo Asset::js('widget-pager.js');
-//    echo Asset::js('widget-print.js');
-//    echo Asset::js('widget-reflow.js');
-//    echo Asset::js('widget-repeatheaders.js');
-//    echo Asset::js('widget-scroller.js');
-//    echo Asset::js('widget-staticRow.js');
-//    ?>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <?php
+    echo Asset::css("theme.ice.css");
+    echo Asset::css("hospitalstyle.css");
+    ?>
+
+
 </head>
 
 <body>
