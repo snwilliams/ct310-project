@@ -78,6 +78,7 @@
 
             $(function() {
                 $("table").tablesorter({
+                    theme: "ice",
                     widthFixed: false,
                     cancelSelection: true,
                     tabIndex: true,
@@ -97,7 +98,7 @@
                     sortInitialOrder: "asc",
                     sortReset: true,
                     initWidgets: true,
-                    widgets: ['zebra', 'columns'],
+                    widgets: ['zebra', 'columns', 'uitheme'],
                     widgetOptions: {
                         columns: [
                             "DRG_Number",
@@ -106,8 +107,8 @@
                         columns_thead: true,
                         resizable: true,
                         zebra: [
-                            "even",
-                            "odd"
+                            "ui-widget-content even",
+                            "ui-state-default odd"
                         ]
                     },
 
@@ -116,5 +117,5 @@
             });
         </script>
     </div>
-</div> 
+</div>
 
