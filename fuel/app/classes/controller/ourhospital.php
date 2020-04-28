@@ -24,7 +24,7 @@ use \Model\OurHospitalDRGModel;
 
 
 
-class Controller_Ourhospital extends Controller
+class Controller_Ourhospital extends Controller_Template
 {
     /**
      * You will come up with a company name and logo and create a home page.
@@ -37,13 +37,16 @@ class Controller_Ourhospital extends Controller
 
     public function action_home()
     {
+        $titlepage = "JRS Solutions";
+        $this->template->main_body=View::forge("hospitalviews/home.php");
+        $this->template->main_css="main.css";
 
-        $view = View::forge("components/template.php", array(
+        /*$view = View::forge("components/template.php", array(
             "titlepage" => "Home",
             "main_body" => View::forge("hospitalviews/home.php")
         ));
 
-        return Response::forge($view);
+        return Response::forge($view);*/
 
     }
 

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="title" content="<?php echo $title ?>">
     <meta name="author" content="Raghd Alowairdhi, Justin Daniels, Sara Williams">
     <meta name="description" content="CT310 Hospital IPPS Charge Analysis Software">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php echo Asset::css('main_css'); ?>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700;900&display=swap" rel="stylesheet">
     <title>
         <?php
         if (isset($titlepage)){
@@ -40,37 +43,20 @@
 
 <body>
     <nav>
-        <ul></ul>
-        <ul></ul>
-        <ul></ul>
+        <ul>Home</ul>
+        <ul>About</ul>
+        <ul>Hospitals</ul>
+        <ul>DRGs</ul>
     </nav>
-<div>
-
-
-<?php
-    if (isset($main_body)){
-        echo $main_body;
-    }
-    else {
-        echo "<h1>This page is under construction</h1>";
-    }
-
-
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+    <main>
+        <?php
+            if (isset($main_body)){
+                echo $main_body;
+            }
+            else {
+                echo "<h1>This page is under construction</h1>";
+            }
+        ?>
+    </main>
 </body>
 </html>
