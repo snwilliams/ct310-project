@@ -5,7 +5,7 @@
     <meta name="description" content="CT310 Hospital IPPS Charge Analysis Software">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php echo Asset::css('main_css'); ?>
+    <?php echo Asset::css('main.css'); ?>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700;900&display=swap" rel="stylesheet">
     <title>
         <?php
