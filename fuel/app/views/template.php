@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="title" content="<?php echo $title ?>">
     <meta name="author" content="Raghd Alowairdhi, Justin Daniels, Sara Williams">
     <meta name="description" content="CT310 Hospital IPPS Charge Analysis Software">
     <meta charset="utf-8">
