@@ -45,7 +45,7 @@ class Controller_Ourhospital extends Controller_Template
             "main_css" => "hospitalstyles/main.css"
         ));
 
-        //return Response::forge($view);
+        return Response::forge($view);
 
     }
 
