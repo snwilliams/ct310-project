@@ -39,9 +39,14 @@
 </head>
 
 <body>
+    <nav>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+    </nav>
 <div>
 
-<?php include "navbar.php"; ?>
+
 <?php
     if (isset($main_body)){
         echo $main_body;
