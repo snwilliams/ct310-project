@@ -5,8 +5,8 @@
     <meta name="description" content="CT310 Hospital IPPS Charge Analysis Software">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href = "local_html/m2/assets/hospitalstyles/css/main.css" rel = "stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700;900&display=swap" rel="stylesheet">
+    <link href="<?php Asset::css($main_css); ?>" rel="stylesheet">
+   
     <title>
         <?php
         if (isset($titlepage)){

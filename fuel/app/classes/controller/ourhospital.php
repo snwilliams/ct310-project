@@ -35,16 +35,17 @@ class Controller_Ourhospital extends Controller_Template
 
     public function action_home()
     {
-        $titlepage = "JRS Solutions";
+        /*$titlepage = "JRS Solutions";
         $this->template->main_body=View::forge("hospitalviews/home.php");
-        $this->template->main_css="main.css";
+        $this->template->main_css="hospitalviews/main.css";*/
 
-        /*$view = View::forge("components/template.php", array(
+        $view = View::forge("components/template.php", array(
             "titlepage" => "Home",
-            "main_body" => View::forge("hospitalviews/home.php")
+            "main_body" => View::forge("hospitalviews/home.php"),
+            "main_css" => "hospitalstyles/main.css"
         ));
 
-        return Response::forge($view);*/
+        //return Response::forge($view);
 
     }
 
