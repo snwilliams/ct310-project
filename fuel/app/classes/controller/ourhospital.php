@@ -22,8 +22,6 @@
 use \Model\OurHospitalModel;
 use \Model\OurHospitalDRGModel;
 
-
-
 class Controller_Ourhospital extends Controller_Template
 {
     /**
