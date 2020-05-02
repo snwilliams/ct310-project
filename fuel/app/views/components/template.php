@@ -36,6 +36,8 @@
 //    echo Asset::js('widget-scroller.js');
 //    echo Asset::js('widget-staticRow.js');
 //    ?>
+
+        <?php echo Asset::css('hospitalstyles/main.css'); ?>
 </head>
 
 <body>
