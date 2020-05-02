@@ -20,36 +20,40 @@
 </head>
 
 <body>
-    <div>
-        <nav>
-        <ul>
-            <li>
-                <?php
-                $link = Uri::base() . "index.php/ourhospital/home.php";
-                echo "<a href='$link'>Home</a>";
-                ?>
-            </li>
-            <li>
-                <?php
-                $link = Uri::base() . "index.php/ourhospital/about.php";
-                echo "<a href='$link'>About us</a>";
-                ?>
-            </li>
-            <li>
-                <?php
-                $link = Uri::base() . "index.php/ourhospital/hospital_list.php";
-                echo "<a href='$link'>List of Hospitals</a>";
-                ?>
-            </li>
-            <li>
-                <?php
-                $link = Uri::base() . "index.php/ourhospital/drg_list.php";
-                echo "<a href='$link'>List of DRGs</a>";
-                ?>
-            </li>
-        </ul>
-        </nav>
-        
+    <div id="header">
+        <!--<img src="<?php //echo Asset::img('header.jpg'); ?>">-->
+        <!--image source: https://www.pexels.com/photo/blue-and-silver-stetoscope-40568/ -->
+    </div>
+    
+    <nav>
+    <ul>
+        <li>
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/home.php";
+            echo "<a href='$link'>Home</a>";
+            ?>
+        </li>
+        <li>
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/about.php";
+            echo "<a href='$link'>About us</a>";
+            ?>
+        </li>
+        <li>
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/hospital_list.php";
+            echo "<a href='$link'>List of Hospitals</a>";
+            ?>
+        </li>
+        <li>
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/drg_list.php";
+            echo "<a href='$link'>List of DRGs</a>";
+            ?>
+        </li>
+    </ul>
+    </nav>
+
         <?php
             if (isset($main_body)){
                 echo $main_body;
@@ -58,7 +62,7 @@
                 echo "<h1>This page is under construction</h1>";
             }
         ?>
-    </div>
+    
     <p>This is a test!</p>
 </body>
 </html>

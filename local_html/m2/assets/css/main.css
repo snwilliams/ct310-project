@@ -1,3 +1,15 @@
+body {
+    max-width: 3000px;
+}
+
+#header {
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)),url("local_html/m2/assets/img/header.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 800px;
+}
+
 nav ul {
     list-style: none;
     padding-left: 0;
