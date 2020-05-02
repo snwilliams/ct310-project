@@ -1,4 +1,14 @@
-body {
-    background-color: black;
-    color: white;
+nav ul {
+    list-style: none;
+    padding-left: 0;
+    background-color: #01233f;
+    margin: 0;
 }
+
+nav ul li {
+    display: inline-block;
+    padding: 10px;
+    color: #c5c6c3;
+    font-family: Roboto, sans-serif;
+}
+
