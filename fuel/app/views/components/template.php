@@ -15,8 +15,8 @@
         }
         ?>
     </title>
-    
-    <?php echo Asset::css('hospitalstyles/main.css'); ?>
+
+    <?php echo Asset::css('main.css'); ?>
 </head>
 
 <body>
