@@ -21,7 +21,9 @@
 
 <body>
     <div id="header">
-        <img src="<?php echo Asset::img('logo.png'); ?>">
+        <?php
+            echo Asset::img("logo.png", array("alt" => "RJS Solutions logo", "class" => "center"));
+        ?>
         <!--header image source: https://www.pexels.com/photo/blue-and-silver-stetoscope-40568/ -->
     </div>
     
