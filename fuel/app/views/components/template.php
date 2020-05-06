@@ -55,6 +55,7 @@
         </li>
     </ul>
     </nav>
+    <div class="main">
 
         <?php
             if (isset($main_body)){
@@ -64,7 +65,7 @@
                 echo "<h1>This page is under construction</h1>";
             }
         ?>
+    </div>
     
-    <p>This is a test!</p>
 </body>
 </html>
