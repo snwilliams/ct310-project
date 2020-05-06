@@ -1,26 +1,83 @@
+header, main, body, footer, p, table {
+    font-family: Roboto, sans-serif;
+}
+
+.main {
+    background-color: white;
+    clear: both;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+
+}
+
 body {
-    max-width: 3000px;
+    max-width: 70%;
+    margin: auto;
+    background: #c4c9cc;
 }
 
 #header {
-    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)),url("https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: linear-gradient(to left, rgba(255,0,0,0),rgba(98, 111, 119, 1)),url("https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 300px;
+    height: 200px;
+}
+#icon {
+    padding-left:10px;
+}
+
+footer {
+    background-color: #01233f;
+    color: #c5c6c3;
+    margin: auto;
+    font-size: 14px;
+}
+
+nav {
+    background-color: #01233f;
+    overflow: hidden;
 }
 
 nav ul {
     list-style: none;
     padding-left: 0;
-    background-color: #01233f;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+nav ul a {
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 25%;
+    color: #c5c6c3;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+nav a:hover {
+    background-color: #626f77;
+    color: #01233f;
+}
+
+h1 {
     margin: 0;
 }
 
-nav ul li {
-    display: inline-block;
-    padding: 10px;
-    color: #c5c6c3;
-    font-family: Roboto, sans-serif;
+table {
+    width: 100%;
+}
+#address {
+    width: 50%;
 }
 
+td {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 25%;
+}
