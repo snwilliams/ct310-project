@@ -1,7 +1,7 @@
 
 <?php echo Asset::css("about.css"); ?>
 
-<div class="main">
+
   <p>This is our team: Raghad Alowairdhi, Justin Daniels, and Sara Williams.</p>
   <div class="card">
   <?php echo Asset::img("Justin.jpg", array("alt" => "Justin Daniels", "class" => "center")); ?>
@@ -25,5 +25,5 @@
       <h4><b>Raghd Alowairdhi</b></h4>
       <p>About Raghd</p>
   </div>
-</div>
-</main>
+
+
