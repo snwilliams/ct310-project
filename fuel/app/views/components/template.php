@@ -21,8 +21,8 @@
 
 <body>
     <div id="header">
-        <!--<img src="<?php //echo Asset::img('header.jpg'); ?>">-->
-        <!--image source: https://www.pexels.com/photo/blue-and-silver-stetoscope-40568/ -->
+        <img src="<?php echo Asset::img('icon.png'); ?>">
+        <!--header image source: https://www.pexels.com/photo/blue-and-silver-stetoscope-40568/ -->
     </div>
     
     <nav>
