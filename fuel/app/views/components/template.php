@@ -21,7 +21,7 @@
 
 <body>
     <div id="header">
-        <img src="<?php echo Asset::img('icon.png'); ?>">
+        <img src="<?php echo Asset::img('logo.png'); ?>">
         <!--header image source: https://www.pexels.com/photo/blue-and-silver-stetoscope-40568/ -->
     </div>
     
