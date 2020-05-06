@@ -1,7 +1,5 @@
-<?php
-echo Asset::img("logo.png", array("alt" => "RJS Solutions logo", "class" => "center"));
-?>
 
+<?php echo Asset::css("about.css"); ?>
 
 <p>This is our team: Raghad Alowairdhi, Justin Daniels, and Sara Williams.</p>
 
