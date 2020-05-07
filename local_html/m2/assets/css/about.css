@@ -5,6 +5,7 @@
 
 .container {
     margin: auto;
+    word-wrap: break-word;
 }
 
 h1, p {
