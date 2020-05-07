@@ -7,10 +7,12 @@
     <div class="card">
       <div class="image"><?php echo Asset::img("Justin.jpg", array("alt" => "Justin Daniels")); ?></div>
       <div class="container">
-        <h2>Justin</h2>
-        <p class="title">Colorado State University, </p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p></p>
+        <h2>Justin Daniels</h2>
+        <p class="title">Colorado State University, 2020</p>
+        <p>Justin is currently a Senior at Colorado State University. He will be completing his degree in Applied Computing Technology in the Fall of 2020. 
+          In his spare time, he is a full time father, with aspirations of returning to the IT field upon graduation. 
+          He hopes to one day teach computer literacy skills to middle schoolers and the elderly.</p>
+        <p><a href="mailto:justin.r.daniels.86@gmail.com" class="email">Contact Justin</a></p>
       </div>
     </div>
   </div>
@@ -26,7 +28,7 @@
           In her spare time, she likes to knit, play video games, and read.
           She hopes to work as a web developer after graduation. 
         </p>
-        <p>Email: <a href="mailto:sara.williams.n@gmail.com">sara.williams.n@gmail.com</a></p>
+        <p>Email: <a href="mailto:sara.williams.n@gmail.com" class="email">Contact Sara</a></p>
       </div>
     </div>
   </div>
@@ -35,10 +37,12 @@
     <div class="card">
     <div class="image"><?php echo Asset::img("raghd.jpg", array("alt" => "Raghd Alowairdhi")); ?></div>
       <div class="container">
-        <h2>Raghd</h2>
+        <h2>Raghd Alowairdhi</h2>
         <p class="title">Colorado State University, </p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>raghd@example.com</p>
+        <p>Raghd is a senior year at CSU, pursuing a degree in Applied Computing Technology. 
+          In her free time She like to play video games and solve puzzles. 
+          She hope to work as a software developer after graduation.</p>
+        <p>Email: <a href="mailto:raghd@rams.colostate.edu" class="email">Contact Raghd</a></p>
       </div>
     </div>
   </div>

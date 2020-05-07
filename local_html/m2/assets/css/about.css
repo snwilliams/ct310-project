@@ -17,6 +17,11 @@ html {
     margin-right: auto;
     width: 50%;
   }
+
+  .email {
+      text-decoration: none;
+      color: #01233f;
+  }
   
   .column {
     float: left;
