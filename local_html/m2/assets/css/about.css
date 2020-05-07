@@ -1,20 +1,7 @@
-/*.card {
-    display: inline-block;
-    float: left;
-    width: 33%;
-}
-
-.container {
-    word-wrap: break-word;
-    text-align: center;
-    margin: auto;
-}
-
 h1, p {
     font-family: Roboto, sans-serif;
     color: black;
 }
-*/
 
 html {
     box-sizing: border-box;
@@ -22,6 +9,10 @@ html {
   
   *, *:before, *:after {
     box-sizing: inherit;
+  }
+
+  .image {
+      margin: auto;
   }
   
   .column {
@@ -34,13 +25,6 @@ html {
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 8px;
-  }
-  
-  .about-section {
-    padding: 50px;
-    text-align: center;
-    background-color: #474e5d;
-    color: white;
   }
   
   .container {
