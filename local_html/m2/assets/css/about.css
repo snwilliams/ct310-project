@@ -6,3 +6,8 @@
 .container {
     margin: auto;
 }
+
+h1, p {
+    font-family: Roboto, sans-serif;
+    color: black;
+}

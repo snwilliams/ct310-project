@@ -15,7 +15,7 @@
     <?php echo Asset::img("sara.jpg", array("alt" => "Sara Williams", "class" => "center")); ?>
     <div class="container">
       <h4><b>Sara Williams</b></h4>
-      <p>Sara is a junior at CSU, studing Applied Computing Technology. In her spare time, she likes to knit, play video games, and watch TV. She hopes to work as a web developer after graduation.</p>
+      <p> Test test</p>
     </div>
   </div>
 
