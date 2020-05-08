@@ -90,8 +90,15 @@ td {
 .box {
     width: 25%;
     height: 150px;
+    vertical-align: middle;
 }
 
 #icon-row {
     height: 150px;
+}
+
+#one, #two, #three, #four {
+    background-color: #01233f;
+    color: #c5c6c3;
+    
 }

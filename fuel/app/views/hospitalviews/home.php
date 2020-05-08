@@ -1,14 +1,31 @@
 <table id="mainTable">
-    <tr id="icon-row">
-        <td class="box"><?php echo Asset::img('about-us.svg');?></td>
-        <td class="box"><?php echo Asset::img('hospital-list.svg');?></td>
-        <td class="box"><?php echo Asset::img('drg-list.svg');?></td>
-        <td class="box"><?php echo Asset::img('login.svg');?></td>
-    </tr>
     <tr>
-        <td><h1>About Us</h1></td>
-        <td><h1>Hospital List</h1></td>
-        <td><h1>DRG List</h1></td>
-        <td><h1>Login</h1></td>
+        <td id="1">
+            <?php $link = Uri::base() . "index.php/ourhospital/about.php";
+            echo "<h1><a href='$link'>About Us</a></h1>"; ?>
+        </td>
+        <td id="2">
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/hospital_list.php";
+            echo "<h1><a href='$link'>List of Hospitals</a></h1>";
+            ?>
+        </td>
+        <td id="3">
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/drg_list.php";
+            echo "<h1><a href='$link'>List of DRGs</a></h1>";
+            ?>
+        </td>
+        <td id="4">
+            <?php
+            if(!isset($_SESSION['username'])) {
+                $link = Uri::base() . "index.php/ourhospital/login.php";
+                echo "<h1><a class=\"nav-link\" href='$link'>Login</a></h1>";
+            }else{
+                $link = Uri::base() . "index.php/ourhospital/logout";
+                echo "<h1><a class=\"nav-link\" href='$link'>Logout</a><h1>";
+            }
+            ?>
+        </td>
     </tr>
 </table>
