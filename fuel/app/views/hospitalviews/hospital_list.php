@@ -2,6 +2,10 @@
     <div class="col-12">
         <table id="hospitalList" class="tablesorter table">
             <thead class="thead-dark">
+            <tr class="dark-row">
+                <th colspan="6" class="sorter-false">
+                    <h2 class="hl-title">LIST OF HOSPITALS</H2>
+                </th>
             <tr>
                 <th>Medicare Provider Number</th>
                 <th>Provider Name</th>
