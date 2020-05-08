@@ -24,16 +24,16 @@
                     if ($i ==0) {
                         $uri = Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . $row['provider_id'];
                         $link = '<a href="' . $uri . '">' . $item . "</a>";
-                        echo "<td>" . $link . "</td>\n" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
-                        <td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region_hrr_description'] . "</td>\n";
-
+                        
+                        echo "<td>" . $link . "</td>\n";
                         //echo "<td>" . $row['provider_id'] . "</td>\n<td><a href='$link'>" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
                               //<td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region_hrr_description'] . "</td>\n";                     
                     } else {
+                        echo "<td>" . $item . "</td>\n";
                        // echo "<td>" . $row['provider_id'] . "</td>\n<td><a href='$link'>" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
                               //<td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region_hrr_description'] . "</td>\n"; 
-                              echo "<td>" . $link . "</td>\n" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
-                        <td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region_hrr_description'] . "</td>\n";
+                             // echo "<td>" . $link . "</td>\n" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
+                       // <td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region_hrr_description'] . "</td>\n";
                     }
                     $i++;
                 }
