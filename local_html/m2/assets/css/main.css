@@ -13,8 +13,9 @@ header, main, body, footer, p, table {
 
 .hl-title {
     margin: 8px 4px;
-    font: bold 16px 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+    font: bold 16px 'Roboto', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
     color: #fff;
+    text-align: center;
   }
 
 body {
