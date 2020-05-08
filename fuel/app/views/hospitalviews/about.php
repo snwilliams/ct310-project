@@ -28,7 +28,7 @@
           In her spare time, she likes to knit, play video games, and read.
           She hopes to work as a web developer after graduation. 
         </p>
-        <p>Email: <a href="mailto:sara.williams.n@gmail.com" class="email">Contact Sara</a></p>
+        <p><a href="mailto:sara.williams.n@gmail.com" class="email">Contact Sara</a></p>
       </div>
     </div>
   </div>
@@ -38,11 +38,11 @@
     <div class="image"><?php echo Asset::img("raghd.jpg", array("alt" => "Raghd Alowairdhi")); ?></div>
       <div class="container">
         <h2>Raghd Alowairdhi</h2>
-        <p class="title">Colorado State University, </p>
+        <p class="title">Colorado State University, 2020</p>
         <p>Raghd is a senior year at CSU, pursuing a degree in Applied Computing Technology. 
           In her free time She like to play video games and solve puzzles. 
-          She hope to work as a software developer after graduation.</p>
-        <p>Email: <a href="mailto:raghd@rams.colostate.edu" class="email">Contact Raghd</a></p>
+          She hopes to work as a software developer after graduation.</p>
+        <p><a href="mailto:raghd@rams.colostate.edu" class="email">Contact Raghd</a></p>
       </div>
     </div>
   </div>
