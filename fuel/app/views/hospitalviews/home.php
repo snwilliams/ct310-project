@@ -1,5 +1,5 @@
 <table id="mainTable">
-    <tr>
+    <tr id="icon-row">
         <td class="box"><?php echo Asset::img('about-us.svg');?></td>
         <td class="box"><?php echo Asset::img('hospital-list.svg');?></td>
         <td class="box"><?php echo Asset::img('drg-list.svg');?></td>

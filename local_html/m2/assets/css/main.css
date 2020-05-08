@@ -87,6 +87,11 @@ td {
     width: 90%;
 }
 
-#mainTable td {
+.box {
     width: 25%;
+    height: 222px;
+}
+
+#icon-row {
+    max-height: 222px;
 }
