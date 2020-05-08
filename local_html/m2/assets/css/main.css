@@ -84,14 +84,10 @@ td {
 }
 
 #mainTable {
-    width: 90%;
+    width: 100%;
 }
 
 .box {
     width: 25%;
-    height: 222px;
-}
-
-#icon-row {
-    max-height: 222px;
+    height: 150px;
 }
