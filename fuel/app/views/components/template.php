@@ -91,7 +91,7 @@
     </div>
 
     <footer>
-            <p> JRS Solutions &copy; 2020 </p>
+            <p id="foot"> JRS Solutions &copy; 2020 </p>
     </footer>
     
 </body>

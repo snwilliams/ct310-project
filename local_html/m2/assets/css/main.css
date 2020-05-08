@@ -33,7 +33,12 @@ footer {
     margin: auto;
     font-size: 14px;
     text-align: center;
-    height: 20px;
+    
+}
+
+#foot {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 nav {
