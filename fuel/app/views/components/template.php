@@ -20,6 +20,8 @@
     <?php echo Asset::js('table-sorter/jquery.tablesorter.js')?>
     <?php echo Asset::css('table-sorter/theme.default.css') ?>
     <?php echo Asset::css('table-sorter/theme.dark.css') ?>
+
+    <?php echo Asset::js('template.js'); ?>
 </head>
 
 <body>
