@@ -18,7 +18,11 @@
 
 <?php
     echo Form::close();
-?>
+
+    $register = Uri::base() . 'index.php/ourhospital/register.php';
+    echo '<p>New user?  <a href="' . $register . '">Create an account here!</a>';
+
+    ?>
 
 <?php
         if($failed){
