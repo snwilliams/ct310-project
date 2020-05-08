@@ -103,6 +103,42 @@ class OurHospitalModel extends \Model {
         return $query->execute();
     }
 
+    public static function edit_comment($comment, $comment_id){
+        $timestamp = \Date::forge()->get_timestamp();
+        $date = date('Y-m-d H:i:s', $timestamp);
+
+        $query = DB::update('comments');
+        $query->set(array(
+            'comment' => $comment,
+            'edited' => $date,
+        ));
+        $query->where('comment_id', '=', $comment_id);
+
+        return $query->execute();
+    }
+
+
+    public static function delete_comment($comment_id){
+        $children = OurHospitalModel::find_children($comment_id);
+        $parents = OurHospitalModel::find_parent($comment_id);
+
+        if(sizeof($children) == 0 && sizeof($parents) != 0){
+            $query = DB::delete('comments');
+            $query->where('comment_id', '=', $comment_id);
+            return $query->execute();
+        }
+        else {
+            $query = DB::update('comments');
+            $query->set(array(
+                'comment' => 'deleted',
+                'username' => 'deleted',
+            ));
+            $query->where('comment_id', '=', $comment_id);
+
+            return $query->execute();
+        }
+    }
+
 
 
     public static function get_comments($provider_id){
@@ -113,5 +149,39 @@ class OurHospitalModel extends \Model {
         return DB::query("SELECT * FROM `comments` WHERE provider_id = $provider_id AND parent_id IS NOT NULL", DB::SELECT)->execute()->as_array();
 
     }
+
+    public static function find_children($comment_id){
+        return DB::query("SELECT `comment_id` FROM `comments` WHERE `parent_id` = $comment_id", DB::SELECT)->execute()->as_array();
+    }
+
+    public static function find_parent($comment_id){
+        return DB::query("SELECT `comment_id` FROM `comments` WHERE `comment_id` = $comment_id AND `parent_id` IS NULL", DB::SELECT)->execute()->as_array();
+    }
+
+    public static function upvote_comment($comment_id){
+        $score = OurHospitalModel::get_score($comment_id);
+        $query = DB::update('comments');
+        $query->set(array(
+                'score' => $score[0]['score'] + 1,
+        ));
+        $query->where('comment_id', '=', $comment_id);
+        return $query->execute();
+    }
+
+    public static function downvote_comment($comment_id){
+        $score = OurHospitalModel::get_score($comment_id);
+        $query = DB::update('comments');
+        $query->set(array(
+            'score' => $score[0]['score'] - 1,
+        ));
+        $query->where('comment_id', '=', $comment_id);
+        return $query->execute();
+    }
+
+    public static function get_score($comment_id){
+        return DB::query("SELECT `score` FROM `comments` WHERE `comment_id` = $comment_id", DB::SELECT)->execute()->as_array();
+    }
+
+
 }
 ?>
