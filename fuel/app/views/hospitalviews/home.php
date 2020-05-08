@@ -1,3 +1,14 @@
-<p> Welcome to our hospital page, home of the finest sourced Medicare data from 2017 around!  We put this website together in a flash for your
-perusal.  Enjoy, and please remember to not be so harsh!
-</p>
+<table id="mainTable">
+    <tr>
+        <td class="box"><?php echo Asset::img('about-us.svg');?></td>
+        <td class="box"></td>
+        <td class="box"></td>
+        <td class="box"></td>
+    </tr>
+    <tr>
+        <td>About Us</td>
+        <td>Hospital List</td>
+        <td>DRG List</td>
+        <td>Login</td>
+    </tr>
+</table>

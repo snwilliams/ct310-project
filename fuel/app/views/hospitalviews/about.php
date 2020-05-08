@@ -13,6 +13,9 @@
           In his spare time, he is a full time father, with aspirations of returning to the IT field upon graduation. 
           He hopes to one day teach computer literacy skills to middle schoolers and the elderly.</p>
         <p><a href="mailto:justin.r.daniels.86@gmail.com" class="email">Contact Justin</a></p>
+        <form action="https://www.cs.colostate.edu:4444/~jrindnls/ct310/index.php/ourhospital/home">
+          <input type="submit" value="View Justin's Page" />
+      </form>
       </div>
     </div>
   </div>
@@ -29,6 +32,9 @@
           She hopes to work as a web developer after graduation. 
         </p>
         <p><a href="mailto:sara.williams.n@gmail.com" class="email">Contact Sara</a></p>
+        <form action="https://www.cs.colostate.edu:4444/~soraiku/m2/index.php/ourhospital/home.php">
+          <input type="submit" value="View Sara's Page" />
+      </form>
       </div>
     </div>
   </div>
@@ -43,6 +49,9 @@
           In her free time She like to play video games and solve puzzles. 
           She hopes to work as a software developer after graduation.</p>
         <p><a href="mailto:raghd@rams.colostate.edu" class="email">Contact Raghd</a></p>
+        <form action="https://www.cs.colostate.edu:4444/~raghd/ct310/index.php/ourhospital/home">
+          <input type="submit" value="View Raghd's Page" />
+      </form>
       </div>
     </div>
   </div>
