@@ -22,7 +22,7 @@
                 $i = 0;
                 foreach($row as $item) {
                     if ($i ==0) {
-                        $link = Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . $row['provider_id'];
+                        $uri = Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . $row['provider_id'];
                         $link = '<a href="' . $uri . '">' . $item . "</a>";
                         echo "<td>" . $link . "</td>\n";
 
