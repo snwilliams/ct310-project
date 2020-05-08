@@ -4,8 +4,13 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
+        <?php
+        if(isset($_SESSION['username'])){
+            echo '<span class="navbar-text"> Welcome, ' . $_SESSION['username'] . '</span>';
+        }
+        ?>
         <li class="nav-item active">
             <?php
             $link = Uri::base() . "index.php/ourhospital/home.php";
@@ -42,5 +47,7 @@
             ?>
         </li>
     </ul>
+
     </div>
+
 </nav>
