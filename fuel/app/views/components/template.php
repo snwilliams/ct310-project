@@ -33,6 +33,7 @@
     crossorigin="anonymous"></script>
 
     <?php echo Asset::css("main.css"); ?>
+    <?php echo Asset::css("theme.ice.css"); ?>
     <?php echo Asset::js('table-sorter/jquery.tablesorter.js')?>
 
     <?php echo Asset::js('template.js'); ?>
@@ -70,6 +71,17 @@
             <?php
             $link = Uri::base() . "index.php/ourhospital/drg_list.php";
             echo "<a href='$link'>List of DRGs</a>";
+            ?>
+        </li>
+        <li>
+            <?php
+            if(!isset($_SESSION['username'])) {
+                $link = Uri::base() . "index.php/ourhospital/login.php";
+                echo "<a class=\"nav-link\" href='$link'>Login</a>";
+            }else{
+                $link = Uri::base() . "index.php/ourhospital/logout";
+                echo "<a class=\"nav-link\" href='$link'>Logout</a>";
+            }
             ?>
         </li>
     </ul>
