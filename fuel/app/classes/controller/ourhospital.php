@@ -89,13 +89,14 @@ class Controller_Ourhospital extends Controller
      * @return  Response
      */
 
-    public function action_hospital_list()
+    public function action_hospital_list($start = 0)
     {
         $hospital_list = OurHospitalModel::get_hospitals();
         $view = View::forge("components/template.php", array(
             "titlepage" => "List of hospitals",
             "main_body" => View::forge("hospitalviews/hospital_list.php", array(
-                "hospital_list" => $hospital_list
+                "hospital_list" => $hospital_list,
+                "start" =>$start,
             )),
         ));
         return Response::forge($view);
@@ -109,14 +110,15 @@ class Controller_Ourhospital extends Controller
      * @return  Response
      */
 
-    public function action_drg_list()
+    public function action_drg_list($start = 0)
     {
         $drg_list = OurHospitalModel::get_drg();
         $view = View::forge("components/template.php", array(
 
             "titlepage" => "List of DRGs",
             "main_body" => View::forge("hospitalviews/drg_list.php", array(
-                "drg_list" => $drg_list
+                "drg_list" => $drg_list,
+                "start" =>$start,
             )),
         ));
         return Response::forge($view);

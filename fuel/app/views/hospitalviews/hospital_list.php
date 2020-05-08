@@ -41,6 +41,7 @@
             <nav aria-label="Hospital Table Pagination">
             <ul class="pagination justify-content-sm-center">
                 <?php
+                //TODO: define start. you need to do something in the main controller.
                     if ($start > 0) {
                         $prev_path=Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . max($start - 25, 0);
                         echo '<li class="page-item"><a class="page-link" href="' . $prev_path . '">Previous</a></li>';
