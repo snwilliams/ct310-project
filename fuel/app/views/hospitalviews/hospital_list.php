@@ -41,15 +41,15 @@
             <nav aria-label="Hospital Table Pagination">
             <ul class="pagination justify-content-sm-center">
                 <?php
-                //TODO: define start. you need to do something in the main controller.
                     if ($start > 0) {
-                        $prev_path=Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . max($start - 25, 0);
+                        $prev_path=Uri::base() . "index.php/ourhospital/hospital_list" . max($start - 25, 0);
                         echo '<li class="page-item"><a class="page-link" href="' . $prev_path . '">Previous</a></li>';
                     }
+                    
                 ?>
 
                 <?php 
-                    $next_path = Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . ($start + 25);
+                    $next_path = Uri::base() . "index.php/ourhospital/hospital_list" . ($start + 25);
                     echo '<li class="page-item"><a class="page-link" href="' . $next_path . '">Next</a></li>';
                 ?>
             </ul>
