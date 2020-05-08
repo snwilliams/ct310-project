@@ -21,14 +21,16 @@
             echo   "</tbody>";
         echo    "</table>";
 
+            echo '<div class="d-flex btn-group justify-content-center" role="group">';
         if ($offset > 0){
             $previous = Uri::base() . "index.php/ourhospital/drg_list/" . max($offset - 20, 0);
-            echo "<a href=" . $previous . ">Previous 20 entries</a>";
-            echo "<br>";
+            echo "<a class=\"btn btn-secondary\" href=" . $previous . ">Previous 20 entries</a>";
+
         }if($count >= 20) {
                 $next = Uri::base() . "index.php/ourhospital/drg_list/" . ($offset + 20);
-                echo "<a href=" . $next . ">Next 20 entries</a>";
+                echo "<a class=\"btn btn-secondary\" href=" . $next . ">Next 20 entries</a>";
             }
+        echo '</div>';
         ?>
         <script>
 
