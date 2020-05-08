@@ -107,15 +107,14 @@ td {
 
 .mnav {
     background-color: #324857;
-    color: #c5c6c3;
 
 }
 
 .mnav a {
     text-decoration: none;
+    color: #c5c6c3;
 }
 
-.box:hover {
-    background-color: #847c74;
-    color: #01233f;
+.mnav:hover {
+    background-color: #01233f;
 }
