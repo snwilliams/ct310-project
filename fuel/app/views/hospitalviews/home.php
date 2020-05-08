@@ -1,14 +1,14 @@
 <table id="mainTable">
     <tr>
         <td class="box"><?php echo Asset::img('about-us.svg');?></td>
-        <td class="box"></td>
-        <td class="box"></td>
-        <td class="box"></td>
+        <td class="box"><?php echo Asset::img('hospital-list.svg');?></td>
+        <td class="box"><?php echo Asset::img('drg-list');?></td>
+        <td class="box"><?php echo Asset::img('login.svg');?></td>
     </tr>
     <tr>
-        <td>About Us</td>
-        <td>Hospital List</td>
-        <td>DRG List</td>
-        <td>Login</td>
+        <td><h1>About Us</h1></td>
+        <td><h1>Hospital List</h1></td>
+        <td><h1>DRG List</h1></td>
+        <td><h1>Login</h1></td>
     </tr>
 </table>

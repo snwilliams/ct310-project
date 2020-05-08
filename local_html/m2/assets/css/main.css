@@ -32,6 +32,8 @@ footer {
     color: #c5c6c3;
     margin: auto;
     font-size: 14px;
+    text-align: center;
+    height: 20px;
 }
 
 nav {
@@ -82,7 +84,7 @@ td {
 }
 
 #mainTable {
-    width: 100%;
+    width: 90%;
 }
 
 #mainTable td {
