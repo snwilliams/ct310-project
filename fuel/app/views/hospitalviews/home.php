@@ -2,7 +2,7 @@
     <tr>
         <td class="box"><?php echo Asset::img('about-us.svg');?></td>
         <td class="box"><?php echo Asset::img('hospital-list.svg');?></td>
-        <td class="box"><?php echo Asset::img('drg-list');?></td>
+        <td class="box"><?php echo Asset::img('drg-list.svg');?></td>
         <td class="box"><?php echo Asset::img('login.svg');?></td>
     </tr>
     <tr>
