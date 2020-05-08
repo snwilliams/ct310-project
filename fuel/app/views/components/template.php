@@ -15,57 +15,84 @@
         }
         ?>
     </title>
+ 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
-<!--    --><?php
-//    echo Asset::js('jquery.tablesorter.js');
-//    echo Asset::js('jquery.tablesorter.widgets.js');
-//    echo Asset::js('widget-alignChar.js');
-//    echo Asset::js('widget-build-table.js');
-//    echo Asset::js('widget-columnSelector.js');
-//    echo Asset::js('widget-cssStickyHeaders.js');
-//    echo Asset::js('widget-editable.js');
-//    echo Asset::js('widget-grouping.js');
-//    echo Asset::js('widget-headerTitles.js');
-//    echo Asset::js('widget-math.js');
-//    echo Asset::js('widget-output.js');
-//    echo Asset::js('widget-pager.js');
-//    echo Asset::js('widget-print.js');
-//    echo Asset::js('widget-reflow.js');
-//    echo Asset::js('widget-repeatheaders.js');
-//    echo Asset::js('widget-scroller.js');
-//    echo Asset::js('widget-staticRow.js');
-//    ?>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <?php echo Asset::css("main.css"); ?>
+    <?php echo Asset::css("theme.ice.css"); ?>
+   
+
+
 </head>
 
 <body>
-<div>
+    <div id="header">
+        <?php
+            echo Asset::img("logo.png", array("alt" => "RJS Solutions logo", "class" => "center"));
+        ?>
+        <!--header image source: https://www.pexels.com/photo/blue-and-silver-stetoscope-40568/ -->
+    </div>
+    
+    <nav>
+    <ul>
+        <li>
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/home.php";
+            echo "<a href='$link'>Home</a>";
+            ?>
+        </li>
+        <li>
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/about.php";
+            echo "<a href='$link'>About us</a>";
+            ?>
+        </li>
+        <li>
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/hospital_list.php";
+            echo "<a href='$link'>List of Hospitals</a>";
+            ?>
+        </li>
+        <li>
+            <?php
+            $link = Uri::base() . "index.php/ourhospital/drg_list.php";
+            echo "<a href='$link'>List of DRGs</a>";
+            ?>
+        </li>
+        <li>
+            <?php
+            if(!isset($_SESSION['username'])) {
+                $link = Uri::base() . "index.php/ourhospital/login.php";
+                echo "<a class=\"nav-link\" href='$link'>Login</a>";
+            }else{
+                $link = Uri::base() . "index.php/ourhospital/logout";
+                echo "<a class=\"nav-link\" href='$link'>Logout</a>";
+            }
+            ?>
+        </li>
+    </ul>
+    </nav>
+    <div class="main">
 
-<?php include "navbar.php"; ?>
-<?php
-    if (isset($main_body)){
-        echo $main_body;
-    }
-    else {
-        echo "<h1>This page is under construction</h1>";
-    }
+        <?php
+            if (isset($main_body)){
+                echo $main_body;
+            }
+            else {
+                echo "<h1>This page is under construction</h1>";
+            }
+        ?>
+    </div>
 
-
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+    <footer>
+            <p id="foot"> JRS Solutions &copy; 2020 </p>
+    </footer>
+    
 </body>
 </html>

@@ -2,7 +2,7 @@
 $id = $_GET['id'];
 $description = $_GET['description'];
 
-echo "<h1>Data for $id: $description</h1>";
+echo "<h2>Data for $id: $description</h2>";
 
 
 
@@ -23,19 +23,52 @@ echo "<h1>Data for $id: $description</h1>";
             </thead>
             <tbody>
             <?php
+            $count = 0;
             foreach($drg_data as $row){
+                $count += 1;
                 echo "<tr>\n";
                 echo "<td>" . $row['provider_id'] . "</td>\n<td>" . $row['provider_name'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n
                       <td>" . $row['average_covered_charges'] . "</td>\n<td>" . $row['average_total_payments'] . "</td>\n<td>" . $row['average_medicare_payments'] . "</td>\n";
                 echo "</tr>\n";
             }
-            ?>
-            </tbody>
-        </table>
+
+           echo "</tbody>";
+           echo "</table>";
+
+
+        if ($offset > 0){
+            $_GET['description'] = str_replace("%20", " ", $_GET['description']);
+            $_GET['description'] = str_replace("%3C", "<", $_GET['description']);
+            $_GET['description'] = str_replace("%3E", ">", $_GET['description']);
+            $_GET['description'] = str_replace("%25", "%", $_GET['description']);
+            $_GET['description'] = str_replace("%26", "&", $_GET['description']);
+            $_GET['description'] = str_replace("%2F", "/", $_GET['description']);
+            $_GET['description'] = trim($_GET['description']);
+            $_GET['description'] = filter_var($_GET['description'], FILTER_SANITIZE_ENCODED);
+            $previous = Uri::base() . "index.php/ourhospital/drg_details/" . max($offset - 20, 0) . "?id=" . $_GET['id'] . "&description=" . $_GET['description'];
+            echo "<a href=" . $previous . ">Previous 20 entries</a>";
+            echo "<br>";
+        }
+        if ($count >= 20 ) {
+            $_GET['description'] = str_replace("%20", " ", $_GET['description']);
+            $_GET['description'] = str_replace("%3C", "<", $_GET['description']);
+            $_GET['description'] = str_replace("%3E", ">", $_GET['description']);
+            $_GET['description'] = str_replace("%25", "%", $_GET['description']);
+            $_GET['description'] = str_replace("%26", "&", $_GET['description']);
+            $_GET['description'] = str_replace("%2F", "/", $_GET['description']);
+            $_GET['description'] = trim($_GET['description']);
+            $_GET['description'] = filter_var($_GET['description'], FILTER_SANITIZE_ENCODED);
+            $next = Uri::base() . "index.php/ourhospital/drg_details/" . ($offset + 20) . "?id=" . $_GET['id'] . "&description=" . $_GET['description'];
+            echo "<a href=" . $next . ">Next 20 entries</a>";
+
+        }
+        ?>
+
         <script>
 
             $(function() {
                 $("table").tablesorter({
+                    theme: "ice",
                     widthFixed: false,
                     cancelSelection: true,
                     tabIndex: true,
@@ -55,7 +88,7 @@ echo "<h1>Data for $id: $description</h1>";
                     sortInitialOrder: "asc",
                     sortReset: true,
                     initWidgets: true,
-                    widgets: ['zebra', 'columns'],
+                    widgets: ['zebra', 'columns', 'uitheme'],
                     widgetOptions: {
                         columns: [
                             "DRG_Number",
@@ -64,8 +97,8 @@ echo "<h1>Data for $id: $description</h1>";
                         columns_thead: true,
                         resizable: true,
                         zebra: [
-                            "even",
-                            "odd"
+                            "ui-widget-content even",
+                            "ui-state-default odd"
                         ]
                     },
 
@@ -75,4 +108,3 @@ echo "<h1>Data for $id: $description</h1>";
         </script>
     </div>
 </div>
-
