@@ -91,7 +91,7 @@ class Controller_Ourhospital extends Controller
 
     public function action_hospital_list($start = 0)
     {
-        $hospital_list = OurHospitalModel::get_hospitals();
+        $hospital_list = OurHospitalModel::get_hospitals($start, 25);
         $view = View::forge("components/template.php", array(
             "titlepage" => "List of hospitals",
             "main_body" => View::forge("hospitalviews/hospital_list.php", array(

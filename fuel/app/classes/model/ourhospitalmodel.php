@@ -5,17 +5,18 @@ use \DB;
 
 class OurHospitalModel extends \Model {
 
-    public static function get_hospitals(){
+    public static function get_hospitals($from, $amount){
 
         return DB::query(
-            "SELECT DISTINCT provider_id, provider_name, provider_street_address, provider_city, provider_state, hospital_referral_region_hrr_description FROM `medicare`", DB::SELECT
+            "SELECT DISTINCT provider_id, provider_name, provider_street_address, provider_city, provider_state, hospital_referral_region_hrr_description FROM `medicare` LIMIT $amount OFFSET $from", DB::SELECT
         )->execute()->as_array();
     }
 
-   public static function get_drg(){
+   public static function get_drg($from, $amount){
 
         return DB::query(
-            "SELECT DISTINCT DRG_Number, DRG_Description FROM `medicare`", DB::SELECT)->execute()->as_array();
+            "SELECT DISTINCT DRG_Number, DRG_Description FROM `medicare` LIMIT $amount OFFSET $from", DB::SELECT
+            )->execute()->as_array();
 
 
 
