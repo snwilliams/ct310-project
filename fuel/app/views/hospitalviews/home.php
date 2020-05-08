@@ -1,3 +1,6 @@
+<p>Welcome to JRS Solutions. Do you need help organizing your medical data? We have the solution! Click through our page to learn more. </p>
+
+
 <table id="mainTable">
     <tr>
         <td class="mnav">
