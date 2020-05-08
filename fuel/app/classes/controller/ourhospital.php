@@ -89,14 +89,14 @@ class Controller_Ourhospital extends Controller
      * @return  Response
      */
 
-    public function action_hospital_list($start = 0)
+    public function action_hospital_list($offset = 0)
     {
-        $hospital_list = OurHospitalModel::get_hospitals($start, 25);
+        $hospital_list = OurHospitalModel::get_hospitals($offset, 20);
         $view = View::forge("components/template.php", array(
             "titlepage" => "List of hospitals",
             "main_body" => View::forge("hospitalviews/hospital_list.php", array(
                 "hospital_list" => $hospital_list,
-                "start" =>$start,
+                 "offset" => $offset,
             )),
         ));
         return Response::forge($view);
@@ -110,15 +110,15 @@ class Controller_Ourhospital extends Controller
      * @return  Response
      */
 
-    public function action_drg_list($start = 0)
+    public function action_drg_list($offset = 0)
     {
-        $drg_list = OurHospitalModel::get_drg();
+        $drg_list = OurHospitalModel::get_drg($offset, 20);
         $view = View::forge("components/template.php", array(
 
             "titlepage" => "List of DRGs",
             "main_body" => View::forge("hospitalviews/drg_list.php", array(
                 "drg_list" => $drg_list,
-                "start" =>$start,
+                "offset" => $offset,
             )),
         ));
         return Response::forge($view);
@@ -135,14 +135,39 @@ class Controller_Ourhospital extends Controller
      * @return  Response
      */
 
-    public function action_hospital_details()
+    public function action_hospital_details($offset = 0)
     {
-
-        $view = View::forge("components/template.php", array(
-            "titlepage" => "Hospital details",
-            "main_body" => View::forge("hospitalviews/hospital_details.php")
-        ));
-        return Response::forge($view);
+       if (isset($_GET['searchquery'])){
+           $query = $_GET['searchquery'];
+           $hospital_data = OurHospitalModel::get_hospital_details($query, $offset, 20);
+           $comments = OurHospitalModel::get_comments($query);
+           $responses = OurHospitalModel::get_responses($query);
+           $view = View::forge("components/template.php", array(
+               "titlepage" => "Hospital details",
+               "main_body" => View::forge("hospitalviews/hospital_details.php", array(
+                   "hospital_data" => $hospital_data,
+                   "offset" => $offset,
+                   "comments" => $comments,
+                   "responses" => $responses,
+               )),
+           ));
+           return Response::forge($view);
+       }
+       else {
+           $hospital_data = OurHospitalModel::get_hospital_details_default($offset, 20);
+           $comments = OurHospitalModel::get_comments($_GET['num']);
+           $responses = OurHospitalModel::get_responses($_GET['num']);
+           $view = View::forge("components/template.php", array(
+               "titlepage" => "Hospital details",
+               "main_body" => View::forge("hospitalviews/hospital_details.php", array(
+                   "hospital_data" => $hospital_data,
+                   "offset" => $offset,
+                   "comments" => $comments,
+                   "responses" => $responses,
+               )),
+           ));
+           return Response::forge($view);
+       }
     }
 
     /**
@@ -153,17 +178,92 @@ class Controller_Ourhospital extends Controller
      * @return  Response
      */
 
-    public function action_drg_details()
+    public function action_drg_details($offset = 0)
     {
-        $drg_data = OurHospitalModel::get_drg_details();
+
+        $drg_data = OurHospitalModel::get_drg_details($offset, 20);
         $view = View::forge("components/template.php", array(
             "titlepage" => "DRG details",
             "main_body" => View::forge("hospitalviews/drg_details.php", array(
-                "drg_data" => $drg_data
+                "drg_data" => $drg_data,
+                "offset" => $offset,
+
             )),
         ));
         return Response::forge($view);
     }
+
+    public function get_login() {
+        $view = View::forge("components/template.php", array(
+            "titlepage" => "Log in to our website",
+            "main_body" => View::forge("hospitalviews/login.php", array (
+                "failed" => false,
+                )),
+        ));
+        return Response::forge($view);
+    }
+
+    public function post_login()
+    {
+        session_start();
+        $validation = Controller_Ourhospital::return_login_validation();
+        $username = Input::post('username');
+        $password = Input::post('password');
+        if ($validation->run() && Auth::instance()->login($username, $password)) {
+            $_SESSION['username'] = Input::post('username');
+            return Response::redirect('index.php/ourhospital/home.php');
+        } else {
+
+            $view = View::forge("components/template.php", array(
+                "titlepage" => "Log in to our website",
+                "main_body" => View::forge("hospitalviews/login.php", array(
+                    "failed" => true,
+                )),
+            ));
+            return Response::forge($view);
+       }
+    }
+
+
+    public function action_logout() {
+        session_start();
+        unset($_SESSION['username']);
+        session_destroy();
+        return Response::redirect('index.php/ourhospital/home');
+    }
+
+    private static function return_login_validation() {
+        $valid = Validation::forge('registration_validation');
+        $valid->add('username', 'Your username')->add_rule('required');
+        $valid->add('password', 'Your password')->add_rule('required')->add_rule('min_length', 5)->add_rule('max_length', 20);
+        return $valid;
+    }
+
+    public function post_new_comment(){
+        session_start();
+
+            if(strlen(Input::post('comment')) > 0 && isset($_SESSION['username'])){
+                $username = $_SESSION['username'];
+                OurHospitalModel::post_comment(Input::post('comment'), Input::post('provider-id'), $username);
+
+            }
+            return Response::redirect('index.php/ourhospital/hospital_details?num=' . Input::post('provider-id') . '&searchquery=' . Input::post('provider-id') . '&id=' . Input::post('id'));
+
+    }
+
+    public function post_comment_response(){
+        session_start();
+
+            if(strlen(Input::post('response')) > 0 && isset($_SESSION['username'])) {
+                $username = $_SESSION['username'];
+                OurHospitalModel::post_comment(
+                    Input::post('response'),
+                    input::post('provider-id'),
+                    $username,
+                    Input::post('chat')
+                );
+                return Response::redirect('index.php/ourhospital/hospital_details?num=' . Input::post('provider-id') . '&searchquery=' . Input::post('provider-id') . '&id=' . Input::post('id'));
+            }
+        }
+
 }
-
-
