@@ -1,22 +1,22 @@
 <table id="mainTable">
     <tr>
-        <td id="1">
+        <td id="one">
             <?php $link = Uri::base() . "index.php/ourhospital/about.php";
             echo "<h1><a href='$link'>About Us</a></h1>"; ?>
         </td>
-        <td id="2">
+        <td id="two">
             <?php
             $link = Uri::base() . "index.php/ourhospital/hospital_list.php";
             echo "<h1><a href='$link'>List of Hospitals</a></h1>";
             ?>
         </td>
-        <td id="3">
+        <td id="three">
             <?php
             $link = Uri::base() . "index.php/ourhospital/drg_list.php";
             echo "<h1><a href='$link'>List of DRGs</a></h1>";
             ?>
         </td>
-        <td id="4">
+        <td id="four">
             <?php
             if(!isset($_SESSION['username'])) {
                 $link = Uri::base() . "index.php/ourhospital/login.php";
