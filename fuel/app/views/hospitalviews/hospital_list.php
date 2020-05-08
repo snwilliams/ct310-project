@@ -48,7 +48,7 @@
                 ?>
 
                 <?php 
-                    $next_path = Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . ($start - 25, 0);
+                    $next_path = Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . ($start + 25);
                     echo '<li class="page-item"><a class="page-link" href="' . $next_path . '">Next</a></li>';
                 ?>
             </ul>

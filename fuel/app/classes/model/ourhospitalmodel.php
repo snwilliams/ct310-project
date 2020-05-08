@@ -8,7 +8,7 @@ class OurHospitalModel extends \Model {
     public static function get_hospitals(){
 
         return DB::query(
-            "SELECT DISTINCT provider_id, provider_name, provider_street_address, provider_city, provider_state, hospital_referral_region FROM `medicare`", DB::SELECT
+            "SELECT DISTINCT provider_id, provider_name, provider_street_address, provider_city, provider_state, hospital_referral_region_hrr_description FROM `medicare`", DB::SELECT
         )->execute()->as_array();
     }
 
