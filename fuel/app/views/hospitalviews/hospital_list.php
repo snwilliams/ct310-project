@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12">
         <table id="hospitalList" class="tablesorter table">
-            <thead class="thead-dark">
+            <thead class="head-row">
             <tr class="dark-row">
                 <th colspan="6" class="sorter-false">
                     <h2 class="hl-title">LIST OF HOSPITALS</H2>
@@ -26,14 +26,9 @@
                         $link = '<a href="' . $uri . '">' . $item . "</a>";
                         
                         echo "<td>" . $link . "</td>\n";
-                        //echo "<td>" . $row['provider_id'] . "</td>\n<td><a href='$link'>" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
-                              //<td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region_hrr_description'] . "</td>\n";                     
+                                             
                     } else {
                         echo "<td>" . $item . "</td>\n";
-                       // echo "<td>" . $row['provider_id'] . "</td>\n<td><a href='$link'>" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
-                              //<td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region_hrr_description'] . "</td>\n"; 
-                             // echo "<td>" . $link . "</td>\n" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
-                       // <td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region_hrr_description'] . "</td>\n";
                     }
                     $i++;
                 }

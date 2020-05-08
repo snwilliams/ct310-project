@@ -24,6 +24,14 @@ body {
     background: #c4c9cc;
 }
 
+.page-link, .head-row {
+    background-color: 01223f;
+    color: #c5c6c3;
+    font: bold 14px 'Roboto', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+
 #header {
     background-image: linear-gradient(to left, rgba(255,0,0,0),rgba(98, 111, 119, 1)),url("https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     background-repeat: no-repeat;
