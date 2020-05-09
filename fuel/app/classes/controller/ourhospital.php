@@ -186,7 +186,7 @@ class Controller_Ourhospital extends Controller
     }
 
 public function get_login(){
-      $view  = View::forge("hospitalviews/components/template.php", array(
+      $view  = View::forge("components/template.php", array(
             "titlepage" => "Login",
             "main_body" => View::forge("hospitalviews/login.php", array( 
                "failed" => false
@@ -207,7 +207,7 @@ public function post_login(){
                 return Response::redirect('index.php/ourhospital/home');
                 }
         else {
-                 $view  = View::forge("hospitalviews/components/template.php",
+                 $view  = View::forge("components/template.php",
                  array(
                  "titlepage" => "Login",
                  "main_body" => View::forge("hospitalviews/login.php", 
@@ -258,7 +258,7 @@ public function action_register() {
                     $_SESSION['username'] = Input::post('username');
                     return Response::redirect('index.php/ourhospital/home');
                 } catch (SimpleUserUpdateException $e) {
-                    return Response::forge(View::Forge('hospitalviews/components/template.php', array(
+                    return Response::forge(View::Forge('components/template.php', array(
                         'titlepage' =>'Register',
                         'main_body' => View::forge('hospitalviews/register.php', array('message' => $e->getMessage()))
                     )
@@ -267,7 +267,7 @@ public function action_register() {
 
             } else {
                 // input validation failed
-                return Response::forge(View::Forge('hospitalviews/components/template.php', array(
+                return Response::forge(View::Forge('components/template.php', array(
                     'titlepage' => 'Register',
                  "main_body" => View::forge("hospitalviews/register.php", array(
                "failed" => true ))
@@ -275,7 +275,7 @@ public function action_register() {
                 ));
             }
         }
-        return Response::forge(View::Forge('hospitalviews/components/template.php', array('titlepage' => 'Register',
+        return Response::forge(View::Forge('components/template.php', array('titlepage' => 'Register',
                  "main_body" => View::forge("hospitalviews/register.php"))));
     }
 
@@ -332,7 +332,7 @@ public function action_register() {
             $hospital_data = OurHospitalModel::get_hospital_details_default(0, 20);
             $comments = OurHospitalModel::get_comments($num);
             $responses = OurHospitalModel::get_responses($num);
-            $view = View::forge("hospitalviews/components/template.php", array(
+            $view = View::forge("components/template.php", array(
                 "titlepage" => "Editing comment",
                 "main_body" => View::forge("hospitalviews/edit.php", array(
                     "hospital_data" => $hospital_data,
