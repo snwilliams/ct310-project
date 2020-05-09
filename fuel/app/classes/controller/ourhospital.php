@@ -27,8 +27,17 @@ use \Model\OurHospitalDRGModel;
 class Controller_Ourhospital extends Controller
 {
 
-    // CTOR 
+    public function action_home()
+    {
 
+        $view = View::forge("components/template.php", array(
+            "titlepage" => "Home",
+            "main_body" => View::forge("hospitalviews/home.php")
+        ));
+
+        return Response::forge($view);
+
+    }
 
     /**
      * You will come up with a company name and logo and create a home page.
@@ -39,34 +48,29 @@ class Controller_Ourhospital extends Controller
      * @return  Response
      */
 
-    public function action_home()
-    {
-
-        $view = View::forge("hospitalviews/components/template.php", array(
-            "titlepage" => "Home",
-            "main_body" => View::forge("hospitalviews/pages/home.php")
-        ));
-
-        return Response::forge($view);
-
-    }
-
- public function action_index()
+    public function action_index()
     {
         return Response::redirect("index.php/ourhospital/home");
     }
-  public function action_about()
+
+    /**
+     * On this page, you will have a picture, name, and bio for each of your team members along with a link
+     * to their deployment of the entire site.
+     * (Yes, you each must host a fully working copy of the application on the due date)
+     *
+     * @access  public
+     * @return  Response
+     */
+    public function action_about()
     {
-        $view = View::forge("hospitalviews/components/template.php", array(
+        $view = View::forge("components/template.php", array(
             "titlepage" => "About us",
-            "main_body" => View::forge("hospitalviews/pages/about.php")
+            "main_body" => View::forge("hospitalviews/about.php")
         ));
         return Response::forge($view);
     }
 
-
-
-       /**
+    /**
      * Simple a list of each hospital.  Must include Hospital Name, State, and MPN (Medicare’s 6-digit provider ID number,
      * with leading zeros if needed).
      * This page uses a jQuery Tablesorter to allow a user to sort or filter by Name, MPN, State, and any other reasonable column
@@ -76,18 +80,20 @@ class Controller_Ourhospital extends Controller
      * @access  public
      * @return  Response
      */
-public function action_hospital_list($offset = 0)
+
+    public function action_hospital_list($offset = 0)
     {
         $hospital_list = OurHospitalModel::get_hospitals($offset, 20);
-        $view = View::forge("hospitalviews/components/template.php", array(
+        $view = View::forge("components/template.php", array(
             "titlepage" => "List of hospitals",
-            "main_body" => View::forge("hospitalviews/pages/hospital_list.php", array(
+            "main_body" => View::forge("hospitalviews/hospital_list.php", array(
                 "hospital_list" => $hospital_list,
                  "offset" => $offset,
             )),
         ));
         return Response::forge($view);
     }
+
     /**
      * Similar to the Hospital List page, except this page lists the MS-DRG Number and Description of each MS-DRG that has data in the dataset.
      *  It can be filtered and sorted by either of these columns.
@@ -99,7 +105,7 @@ public function action_hospital_list($offset = 0)
     public function action_drg_list($offset = 0)
     {
         $drg_list = OurHospitalModel::get_drg($offset, 20);
-        $view = View::forge("hospitalviews/components/template.php", array(
+        $view = View::forge("components/template.php", array(
 
             "titlepage" => "List of DRGs",
             "main_body" => View::forge("hospitalviews/drg_list.php", array(
@@ -128,9 +134,9 @@ public function action_hospital_list($offset = 0)
            $hospital_data = OurHospitalModel::get_hospital_details($query, $offset, 20);
            $comments = OurHospitalModel::get_comments($query);
            $responses = OurHospitalModel::get_responses($query);
-           $view = View::forge("hospitalviews/components/template.php", array(
+           $view = View::forge("components/template.php", array(
                "titlepage" => "Hospital details",
-               "main_body" => View::forge("hospitalviews/pages/hospital_details.php", array(
+               "main_body" => View::forge("hospitalviews/hospital_details.php", array(
                    "hospital_data" => $hospital_data,
                    "offset" => $offset,
                    "comments" => $comments,
@@ -143,9 +149,9 @@ public function action_hospital_list($offset = 0)
            $hospital_data = OurHospitalModel::get_hospital_details_default($offset, 20);
            $comments = OurHospitalModel::get_comments($_GET['num']);
            $responses = OurHospitalModel::get_responses($_GET['num']);
-           $view = View::forge("hospitalviews/components/template.php", array(
+           $view = View::forge("components/template.php", array(
                "titlepage" => "Hospital details",
-               "main_body" => View::forge("hospitalviews/pages/hospital_details.php", array(
+               "main_body" => View::forge("hospitalviews/hospital_details.php", array(
                    "hospital_data" => $hospital_data,
                    "offset" => $offset,
                    "comments" => $comments,
@@ -168,9 +174,9 @@ public function action_hospital_list($offset = 0)
     {
 
         $drg_data = OurHospitalModel::get_drg_details($offset, 20);
-        $view = View::forge("hospitalviews/components/template.php", array(
+        $view = View::forge("components/template.php", array(
             "titlepage" => "DRG details",
-            "main_body" => View::forge("hospitalviews/pages/drg_details.php", array(
+            "main_body" => View::forge("hospitalviews/drg_details.php", array(
                 "drg_data" => $drg_data,
                 "offset" => $offset,
 
