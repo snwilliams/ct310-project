@@ -230,8 +230,6 @@ public function post_login(){
    } 
 
 
-
-
  public function action_logout(){
     session_start();
     unset($_SESSION['username']);
