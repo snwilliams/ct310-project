@@ -102,7 +102,7 @@ public function action_hospital_list($offset = 0)
         $view = View::forge("hospitalviews/components/template.php", array(
 
             "titlepage" => "List of DRGs",
-            "main_body" => View::forge("hospitalviews/pages/drg_list.php", array(
+            "main_body" => View::forge("hospitalviews/drg_list.php", array(
                 "drg_list" => $drg_list,
                 "offset" => $offset,
             )),
