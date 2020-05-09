@@ -159,6 +159,10 @@
                     }
 
                     else{
+                        if($comment['username'] == 'deleted'){
+                            echo '<input type="text" class="form-control bg-dark text-light" aria-label="Comment" value="' . $comment['comment'] . '" readonly>';
+                        }
+                        else{
                         $upvote = Uri::base() . '/index.php/ourhospital/upvote_comment/hospital_details/?id=' . $hospital_data[0]['provider_name'] . '&num=' . $hospital_data[0]['provider_id'] . '&comment_id=' . $comment['comment_id'];
                         $downvote = Uri::base() . '/index.php/ourhospital/downvote_comment/hospital_details/?id=' . $hospital_data[0]['provider_name'] . '&num=' . $hospital_data[0]['provider_id'] . '&comment_id=' . $comment['comment_id'];
                         echo '<div class="input-group input-group-sm mb-3">
@@ -175,7 +179,7 @@
                                         </div>
                                         </div>';
 
-
+                        }
                     }
                     foreach ($responses as $response){
                         if ($response['parent_id'] == $comment['comment_id']){
@@ -218,6 +222,10 @@
                             }
 
                             else{
+                                if($response['username'] == 'deleted'){
+                                    echo '<input type="text" class="form-control" aria-label="Comment" value="' . $response['comment'] . '" readonly>';
+                                }
+                                else{
                                 $upvote = Uri::base() . '/index.php/ourhospital/upvote_comment/hospital_details/?id=' . $hospital_data[0]['provider_name'] . '&num=' . $hospital_data[0]['provider_id'] . '&comment_id=' . $response['comment_id'];
                                 $downvote = Uri::base() . '/index.php/ourhospital/downvote_comment/hospital_details/?id=' . $hospital_data[0]['provider_name'] . '&num=' . $hospital_data[0]['provider_id'] . '&comment_id=' . $response['comment_id'];
                                 echo '<div class="input-group input-group-sm mb-3">
@@ -234,7 +242,7 @@
                                         </div>
                                         </div>
                                         </div>';
-
+                                }
                             }
                         }
                     }
