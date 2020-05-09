@@ -67,7 +67,7 @@
         </li>
         <li>
             <?php
-            if(!isset($_SESSION['username'])) {
+            if(empty($_SESSION['username'])) {
                 $link = Uri::base() . "index.php/ourhospital/login.php";
                 echo "<a class=\"nav-link\" href='$link'>Login</a>";
             }else{
