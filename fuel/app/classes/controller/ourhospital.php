@@ -26,6 +26,14 @@ use \Model\OurHospitalDRGModel;
 
 class Controller_Ourhospital extends Controller
 {
+    /**
+     * You will come up with a company name and logo and create a home page.
+     * This page will have navigation to other pages but will not contain any data or reports.
+     * While you must create your own logo, you can use any properly cited image in your site to make it look professional.
+     *
+     * @access  public
+     * @return  Response
+     */
 
     public function action_home()
     {
@@ -185,68 +193,48 @@ class Controller_Ourhospital extends Controller
         return Response::forge($view);
     }
 
-public function get_login(){
-      $view  = View::forge("components/template.php", array(
-            "titlepage" => "Login",
-            "main_body" => View::forge("hospitalviews/login.php", array( 
-               "failed" => false
-           )),
+    public function get_login() {
+        $view = View::forge("components/template.php", array(
+            "titlepage" => "Log in to our website",
+            "main_body" => View::forge("hospitalviews/login.php", array (
+                "failed" => false,
+                )),
         ));
-      
         return Response::forge($view);
-  }
+    }
 
-public function post_login(){
+    public function post_login()
+    {
         session_start();
-        $valid =  Controller_Ourhospital::valid_login();
+        $validation = Controller_Ourhospital::return_login_validation();
+        $username = Input::post('username');
+        $password = Input::post('password');
+        if ($validation->run() && Auth::instance()->login($username, $password)) {
+            $_SESSION['username'] = Input::post('username');
+            return Response::redirect('index.php/ourhospital/home.php');
+        } else {
 
-        if($valid->run() && Auth::instance()->login(
-		Input::post('username'),Input::post('password')))
-		{
-                $_SESSION['username'] = Input::post('username');
-                return Response::redirect('index.php/ourhospital/home');
-                }
-        else {
-                 $view  = View::forge("components/template.php",
-                 array(
-                 "titlepage" => "Login",
-                 "main_body" => View::forge("hospitalviews/login.php", 
-				 array( "failed" => true )),
-                 ));
-                 return Response::forge($view);
-            }
- }
+            $view = View::forge("components/template.php", array(
+                "titlepage" => "Log in to our website",
+                "main_body" => View::forge("hospitalviews/login.php", array(
+                    "failed" => true,
+                )),
+            ));
+            return Response::forge($view);
+       }
+    }
 
-   public static function valid_login(){
-   	$value = validation::forge('registration_validation');
-   	//$value = $_POST['username'];
-   	//$value = $_POST['userpassword'];
-   	$value->add('username','username')->add_rule('required');
-   	$value->add('password','password')->add_rule('required')
-   		->add_rule('min_length', 5)
-   		->add_rule('max_length', 20);
-
-   		return $value;
-   } 
-
-
- public function action_logout(){
-    session_start();
-    unset($_SESSION['username']);
-    return Response::redirect('index.php/ourhospital/home');
- }
-
-
-
-public function action_register() {
+    public function action_register()
+    {
         session_start();
         if (Input::post()) {
             // Validate the inputs using fuel validation
-            $val = Validation::forge();
+            $val = validation::forge();
             $val->add_field('username', 'Your username', 'required');
+            // Now add another field for password, and require it to contain at least 3 and at most 10 characters
             $val->add_field('password', 'Your password', 'required');
             $val->add_field('email', 'Your email', 'required|valid_email');
-            if ($val->run()){
+            if ($val->run()) {
                 try {
                     Auth::create_user(
                         Input::post('username'),
@@ -254,30 +242,44 @@ public function action_register() {
                         Input::post('email')
                     );
                     $_SESSION['username'] = Input::post('username');
-                    return Response::redirect('index.php/ourhospital/home');
+                    return Response::redirect('index.php/ourhospital/home.php');
                 } catch (SimpleUserUpdateException $e) {
                     return Response::forge(View::Forge('components/template.php', array(
-                        'titlepage' =>'Register',
-                        'main_body' => View::forge('hospitalviews/register.php', array('message' => $e->getMessage()))
-                    )
+                            "titlepage" => "Register for our website",
+                            'main_body' => View::forge('hospitalviews/register.php'),
+                            'alerts' => View::forge('hospitalviews/failed', array('message' => $e->getMessage()))
+                        )
                     ));
                 }
 
             } else {
                 // input validation failed
                 return Response::forge(View::Forge('components/template.php', array(
-                    'titlepage' => 'Register',
-                 "main_body" => View::forge("hospitalviews/register.php", array(
-               "failed" => true ))
-)
+                        'main_body' => View::forge('hospitalviews/register.php'),
+                        'titlepage' => "Register for our website",
+                        'alerts' => View::forge('hospitalviews/failed.php', array('message' => 'Missing one or more fields.'))
+                    )
                 ));
             }
         }
-        return Response::forge(View::Forge('components/template.php', array('titlepage' => 'Register',
-                 "main_body" => View::forge("hospitalviews/register.php"))));
+        return Response::forge(View::Forge('components/template.php', array('titlepage' => "Register for our website", 'main_body' => View::forge('hospitalviews/register.php'))));
     }
 
 
+
+    public function action_logout() {
+        session_start();
+        unset($_SESSION['username']);
+        session_destroy();
+        return Response::redirect('index.php/ourhospital/home');
+    }
+
+    private static function return_login_validation() {
+        $valid = Validation::forge('registration_validation');
+        $valid->add('username', 'Your username')->add_rule('required');
+        $valid->add('password', 'Your password')->add_rule('required')->add_rule('min_length', 5)->add_rule('max_length', 20);
+        return $valid;
+    }
 
     public function post_new_comment(){
         session_start();
@@ -364,130 +366,5 @@ public function action_register() {
 
 
     }
-
-
-
-///////////           HERE IS THE CODE FOR AUTH CREATE TABLES     /////////////
-
-
-
- public function action_createtables() {
-            // get table name
-        \Config::load('ormauth', true);
-        $table = \Config::get('ormauth.table_name', 'users');
-
-
-        // USER TABLES
-        // table users
-
-        $dump[$table] = \DBUtil::create_table($table, array(
-            'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-            'username' => array('type' => 'varchar', 'constraint' => 50),
-            'password' => array('type' => 'varchar', 'constraint' => 255),
-            'group_id' => array('type' => 'int', 'constraint' => 11, 'default' => 1),
-            'email' => array('type' => 'varchar', 'constraint' => 255),
-            'last_login' => array('type' => 'varchar', 'constraint' => 25),
-            'previous_login' => array('type' => 'varchar', 'constraint' => 25, 'default' => 0),
-            'login_hash' => array('type' => 'varchar', 'constraint' => 255),
-            'user_id' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-        ), array('id'));
-
-        // add a unique index on username and email
-        \DBUtil::create_index($table, array('username', 'email'), 'username', 'UNIQUE');
-
-        $dump[$table.'_metadata'] = \DBUtil::create_table($table.'_metadata', array(
-            'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-            'parent_id' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'key' => array('type' => 'varchar', 'constraint' => 20),
-            'value' => array('type' => 'varchar', 'constraint' => 100),
- 'user_id' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-        ), array('id'));
-
-        // table users_user_role
-        $dump[$table.'_user_roles'] = \DBUtil::create_table($table.'_user_roles', array(
-            'user_id' => array('type' => 'int', 'constraint' => 11),
-            'role_id' => array('type' => 'int', 'constraint' => 11),
-        ), array('user_id', 'role_id'));
-
-        // table users_user_perms
-        $dump[$table.'_user_permissions'] = \DBUtil::create_table($table.'_user_permissions', array(
-            'user_id' => array('type' => 'int', 'constraint' => 11),
-            'perms_id' => array('type' => 'int', 'constraint' => 11),
-        ), array('user_id', 'perms_id'));
-
-
-        //GROUP TABLES
-
-        // table users_group
-        $dump[$table.'_groups'] = \DBUtil::create_table($table.'_groups', array(
-            'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-            'name' => array('type' => 'varchar', 'constraint' => 255),
-            'user_id' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-        ), array('id'));
-
-        // table users_group_role
-        $dump[$table.'_group_roles'] = \DBUtil::create_table($table.'_group_roles', array(
-            'group_id' => array('type' => 'int', 'constraint' => 11),
-            'role_id' => array('type' => 'int', 'constraint' => 11),
-
-        ), array('group_id', 'role_id'));
-
-        // table users_group_perms
-        $dump[$table.'_group_permissions'] = \DBUtil::create_table($table.'_group_permissions', array(
-            'group_id' => array('type' => 'int', 'constraint' => 11),
-            'perms_id' => array('type' => 'int', 'constraint' => 11),
-        ), array('group_id', 'perms_id'));
-
-
-        //ROLE TABLES
-
-        // table users_role
-        $dump[$table.'_roles'] = \DBUtil::create_table($table.'_roles', array(
-            'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-            'name' => array('type' => 'varchar', 'constraint' => 255),
-            'filter' => array('type' => 'enum', 'constraint' => "'', 'A', 'D'", 'default' => ''),
-            'user_id' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-        ), array('id'));
-
-        // table users_role_perms
-        $dump[$table.'_role_permissions'] = \DBUtil::create_table($table.'_role_permissions', array(
-            'role_id' => array('type' => 'int', 'constraint' => 11),
-            'perms_id' => array('type' => 'int', 'constraint' => 11),
-        ), array('role_id', 'perms_id'));
-
-
-        //PERM TABLES
-
-        // table users_perms
-        $dump[$table.'_permissions'] = \DBUtil::create_table($table.'_permissions', array(
-            'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-
-
- 'area' => array('type' => 'varchar', 'constraint' => 25),
-            'permission' => array('type' => 'varchar', 'constraint' => 25),
-            'description' => array('type' => 'varchar', 'constraint' => 255),
-            'user_id' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'created_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-            'updated_at' => array('type' => 'int', 'constraint' => 11, 'default' => 0),
-        ), array('id'));
-
-        // add a unique index on group and permission
-        \DBUtil::create_index($table.'_permissions', array('area', 'permission'), 'permission', 'UNIQUE');
-
-        echo '<pre>';
-        var_dump($dump);
-        echo '</pre>';
-        die();
-
-    }
-
 
 }
