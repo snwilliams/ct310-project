@@ -39,7 +39,7 @@ echo  Form::open(array(
 
 <div style="height: 5px"></div>
 <?php
-	if (!$failed){
+	if ($failed){
 		//echo "<div class = 'row visible'>";
 		echo "";
 	}else{

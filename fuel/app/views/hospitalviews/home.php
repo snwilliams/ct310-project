@@ -21,7 +21,7 @@
         </td>
         <td class="mnav">
             <?php
-            if(!isset($_SESSION['username'])) {
+            if(empty($_SESSION['username'])) {
                 $link = Uri::base() . "index.php/ourhospital/login.php";
                 echo "<h1><a class=\"nav-link\" href='$link'>Login</a></h1>";
             }else{

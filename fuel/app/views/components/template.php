@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?php
+         if(!isset($_SESSION)){
+            session_start();
+        }
         if (isset($titlepage)){
             echo $titlepage;
             }
@@ -25,8 +28,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <?php echo Asset::css("main.css"); ?>
-    <?php echo Asset::css("theme.ice.css"); ?>
-   
+    <?php echo Asset::css("theme.ice.css"); ?>  
 
 
 </head>
@@ -39,45 +41,7 @@
         <!--header image source: https://www.pexels.com/photo/blue-and-silver-stetoscope-40568/ -->
     </div>
     
-    <nav>
-    <ul>
-        <li>
-            <?php
-            $link = Uri::base() . "index.php/ourhospital/home.php";
-            echo "<a href='$link'>Home</a>";
-            ?>
-        </li>
-        <li>
-            <?php
-            $link = Uri::base() . "index.php/ourhospital/about.php";
-            echo "<a href='$link'>About us</a>";
-            ?>
-        </li>
-        <li>
-            <?php
-            $link = Uri::base() . "index.php/ourhospital/hospital_list.php";
-            echo "<a href='$link'>List of Hospitals</a>";
-            ?>
-        </li>
-        <li>
-            <?php
-            $link = Uri::base() . "index.php/ourhospital/drg_list.php";
-            echo "<a href='$link'>List of DRGs</a>";
-            ?>
-        </li>
-        <li>
-            <?php
-            if(!isset($_SESSION['username'])) {
-                $link = Uri::base() . "index.php/ourhospital/login.php";
-                echo "<a class=\"nav-link\" href='$link'>Login</a>";
-            }else{
-                $link = Uri::base() . "index.php/ourhospital/logout";
-                echo "<a class=\"nav-link\" href='$link'>Logout</a>";
-            }
-            ?>
-        </li>
-    </ul>
-    </nav>
+    <?php include "navbar.php"; ?>
     <div class="main">
 
         <?php
