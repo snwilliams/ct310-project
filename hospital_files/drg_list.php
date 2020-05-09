@@ -9,15 +9,29 @@
             </thead>
             <tbody>
             <?php
+            $count = 0;
             foreach($drg_list as $row){
+                $count += 1;
                 echo "<tr>\n";
                 $link = Uri::base() . "index.php/ourhospital/drg_details.php?id=" . $row['DRG_Number'] . "&description=" . $row['DRG_Description'];
                 echo "<td><a href='$link'>" . $row['DRG_Number'] . "</a></td>\n<td>" . $row['DRG_Description'] . "</td>\n";
                 echo "</tr>\n";
             }
-            ?>
-            </tbody>
-        </table>
+
+            echo   "</tbody>";
+        echo    "</table>";
+
+            echo '<div class="d-flex btn-group justify-content-center" role="group">';
+        if ($offset > 0){
+            $previous = Uri::base() . "index.php/ourhospital/drg_list/" . max($offset - 20, 0);
+            echo "<a class=\"btn btn-secondary\" href=" . $previous . ">Previous 20 entries</a>";
+
+        }if($count >= 20) {
+                $next = Uri::base() . "index.php/ourhospital/drg_list/" . ($offset + 20);
+                echo "<a class=\"btn btn-secondary\" href=" . $next . ">Next 20 entries</a>";
+            }
+        echo '</div>';
+        ?>
         <script>
 
         $(function() {
