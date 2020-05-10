@@ -118,3 +118,7 @@ td {
 .mnav:hover {
     background-color: #01233f;
 }
+
+.center {
+    text-align: center;
+}
