@@ -1,8 +1,3 @@
-h1, p {
-    font-family: Roboto, sans-serif;
-    color: black;
-}
-
 html {
     box-sizing: border-box;
   }
@@ -21,6 +16,12 @@ html {
   .email {
       text-decoration: none;
       color: #01233f;
+  }
+
+  .email:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: #626f77;
   }
   
   .column {
@@ -60,6 +61,8 @@ html {
 
   .center {
     text-align: center;
+    font-family: Roboto, sans-serif;
+    color: black;
 }
 
 .button {
