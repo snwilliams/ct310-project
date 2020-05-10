@@ -39,7 +39,7 @@
         <div class="button-container">
           <div class="center-button">
             <form action="https://www.cs.colostate.edu:4444/~soraiku/m2/index.php/ourhospital/home.php">
-              <input type="submit" value="View Sara's Page" />
+              <input type="submit" value="View Sara's Page" class="button"/>
             </form>
           </div>
         </div>
@@ -60,7 +60,7 @@
         <div class="button-container">
           <div class="center-button">
             <form action="https://www.cs.colostate.edu:4444/~raghd/ct310/index.php/ourhospital/home" class="button">
-              <input type="submit" value="View Raghd's Page" />
+              <input type="submit" value="View Raghd's Page" class="button"/>
             </form>
           </div>
         </div>
