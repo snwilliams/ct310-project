@@ -48,10 +48,15 @@
         <p class="center">Raghd is a senior year at CSU, pursuing a degree in Applied Computing Technology. 
           In her free time She like to play video games and solve puzzles. 
           She hopes to work as a software developer after graduation.</p>
+        
         <p class="center"><a href="mailto:raghd@rams.colostate.edu" class="email">Contact Raghd</a></p>
-        <form action="https://www.cs.colostate.edu:4444/~raghd/ct310/index.php/ourhospital/home" class="button">
-          <input type="submit" value="View Raghd's Page" />
-      </form>
+        <div class="button-container">
+          <div class="center-button">
+            <form action="https://www.cs.colostate.edu:4444/~raghd/ct310/index.php/ourhospital/home" class="button">
+              <input type="submit" value="View Raghd's Page" />
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
