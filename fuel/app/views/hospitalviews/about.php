@@ -8,7 +8,7 @@
       <div class="image"><?php echo Asset::img("Justin.jpg", array("alt" => "Justin Daniels")); ?></div>
       <div class="container">
         <h2 class="center">Justin Daniels</h2>
-        <p class="title" class="center">Colorado State University, 2020</p>
+        <p class="title">Colorado State University, 2020</p>
         <p class="center">Justin is currently a Senior at Colorado State University. He will be completing his degree in Applied Computing Technology in the Fall of 2020. 
           In his spare time, he is a full time father, with aspirations of returning to the IT field upon graduation. 
           He hopes to one day teach computer literacy skills to middle schoolers and the elderly.</p>
@@ -25,7 +25,7 @@
     <div class="image"><?php echo Asset::img("sara.jpg", array("alt" => "Sara Williams")); ?></div>
       <div class="container">
         <h2 class="center">Sara Williams</h2>
-        <p class="title" class="center">Colorado State University, 2021</p>
+        <p class="title">Colorado State University, 2021</p>
         <p class="center">
           Sara is a junior at CSU, pursuing a degree in Applied Computing Technology. 
           In her spare time, she likes to knit, play video games, and read.
