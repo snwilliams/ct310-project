@@ -66,6 +66,15 @@ html {
   background-color: #01233f;
   border: none;
   color: #c5c6c3;
+  height: 50px;
+  width: 200px;
+}
+
+.button:hover {
+  height: 60px;
+  width: 220px;
+  background-color: #324857;
+  color: white;
 }
 
 .button-container { 
