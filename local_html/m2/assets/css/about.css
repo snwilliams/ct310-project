@@ -62,10 +62,15 @@ html {
     text-align: center;
 }
 
+.button {
+  background-color: #01233f;
+  border: none;
+  color: #c5c6c3;
+}
+
 .button-container { 
-  height: 200px;
+  height: 50px;
   position: relative;
-  border: 3px solid green; 
 }
 
 .center-button {
