@@ -12,7 +12,7 @@
         }
         if (isset($titlepage)){
             echo $titlepage;
-            }
+        }
         else {
             echo "Page is under construction";
         }
@@ -27,9 +27,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <?php
-    echo Asset::css("theme.ice.css");
-    echo Asset::css("hospitalstyle.css");
 
+        echo Asset::css("theme.ice.css");
+        echo Asset::css("hospitalstyle.css");
 
     ?>
 
@@ -48,9 +48,6 @@
     else {
         echo "<h1>This page is under construction</h1>";
     }
-
-
-
 ?>
 
 
