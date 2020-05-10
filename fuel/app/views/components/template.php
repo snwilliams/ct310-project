@@ -55,7 +55,7 @@
     </div>
 
     <footer>
-            <p id="foot"> JRS Solutions &copy; 2020 </p>
+            <p id="foot"> RJS Solutions &copy; 2020 </p>
     </footer>
     
 </body>
