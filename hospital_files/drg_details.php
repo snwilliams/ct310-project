@@ -23,15 +23,48 @@ echo "<h2>Data for $id: $description</h2>";
             </thead>
             <tbody>
             <?php
+            $count = 0;
             foreach($drg_data as $row){
+                $count += 1;
                 echo "<tr>\n";
                 echo "<td>" . $row['provider_id'] . "</td>\n<td>" . $row['provider_name'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n
                       <td>" . $row['average_covered_charges'] . "</td>\n<td>" . $row['average_total_payments'] . "</td>\n<td>" . $row['average_medicare_payments'] . "</td>\n";
                 echo "</tr>\n";
             }
-            ?>
-            </tbody>
-        </table>
+
+           echo "</tbody>";
+           echo "</table>";
+
+            echo '<div class="d-flex btn-group justify-content-center" role="group">';
+        if ($offset > 0){
+            $_GET['description'] = str_replace("%20", " ", $_GET['description']);
+            $_GET['description'] = str_replace("%3C", "<", $_GET['description']);
+            $_GET['description'] = str_replace("%3E", ">", $_GET['description']);
+            $_GET['description'] = str_replace("%25", "%", $_GET['description']);
+            $_GET['description'] = str_replace("%26", "&", $_GET['description']);
+            $_GET['description'] = str_replace("%2F", "/", $_GET['description']);
+            $_GET['description'] = trim($_GET['description']);
+            $_GET['description'] = filter_var($_GET['description'], FILTER_SANITIZE_ENCODED);
+            $previous = Uri::base() . "index.php/ourhospital/drg_details/" . max($offset - 20, 0) . "?id=" . $_GET['id'] . "&description=" . $_GET['description'];
+            echo "<a class=\"btn btn-secondary\" href=" . $previous . ">Previous 20 entries</a>";
+
+        }
+        if ($count >= 20 ) {
+            $_GET['description'] = str_replace("%20", " ", $_GET['description']);
+            $_GET['description'] = str_replace("%3C", "<", $_GET['description']);
+            $_GET['description'] = str_replace("%3E", ">", $_GET['description']);
+            $_GET['description'] = str_replace("%25", "%", $_GET['description']);
+            $_GET['description'] = str_replace("%26", "&", $_GET['description']);
+            $_GET['description'] = str_replace("%2F", "/", $_GET['description']);
+            $_GET['description'] = trim($_GET['description']);
+            $_GET['description'] = filter_var($_GET['description'], FILTER_SANITIZE_ENCODED);
+            $next = Uri::base() . "index.php/ourhospital/drg_details/" . ($offset + 20) . "?id=" . $_GET['id'] . "&description=" . $_GET['description'];
+            echo "<a class=\"btn btn-secondary\" href=" . $next . ">Next 20 entries</a>";
+
+        }
+        echo '</div>';
+        ?>
+
         <script>
 
             $(function() {

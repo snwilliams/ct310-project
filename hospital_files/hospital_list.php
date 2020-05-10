@@ -13,16 +13,32 @@
             </thead>
             <tbody>
             <?php
+            $count = 0;
             foreach($hospital_list as $row){
+                $count += 1;
                 echo "<tr>\n";
                 $link = Uri::base() . "index.php/ourhospital/hospital_details.php?id=" . $row['provider_name'] . "&num=" . $row['provider_id'];
                 echo "<td>" . $row['provider_id'] . "</td>\n<td><a href='$link'>" . $row['provider_name'] . "</a></td>\n<td>" . $row['provider_street_address'] . "</td>\n
                       <td>" . $row['provider_city'] . "</td>\n<td>" . $row['provider_state'] . "</td>\n<td>" . $row['hospital_referral_region'] . "</td>\n";
                 echo "</tr>\n";
             }
-            ?>
-            </tbody>
-        </table>
+
+
+            echo "</tbody>";
+        echo "</table>";
+            echo '<div class="d-flex btn-group justify-content-center" role="group">';
+                if ($offset > 0){
+                    $previous = Uri::base() . "index.php/ourhospital/hospital_list/" . max($offset - 20, 0);
+                    echo "<a class=\"btn btn-secondary\" href=" . $previous . ">Previous 20 entries</a>";
+
+                }if($count >= 20) {
+                $next = Uri::base() . "index.php/ourhospital/hospital_list/" . ($offset + 20);
+                echo "<a class=\"btn btn-secondary\" href=" . $next . ">Next 20 entries</a>";
+            }
+                echo '</div>';
+        ?>
+
+
         <script>
 
             $(function() {
